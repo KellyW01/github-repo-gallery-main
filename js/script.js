@@ -36,13 +36,23 @@ const userInfo = function(data){
 
 const myPublicRepos = async function (){
     const repoResponse = await fetch (`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
-    const repos = await repoResponse.json;
-    console.log({repos}); //await is underlined in vs code and repoData is not working
-    // displayRepos(repos);
+    const repos = await repoResponse.json();
+    console.log({repos}); //15 objects each with a set of keyvalue pairs
+    displayRepos(repos);
 }
 myPublicRepos();
 
 //display repos
-// const displayRepos = function (repos){
+const displayRepos = function (repos){
+
+    for (let eachMethodArray of repos){ //for each of the method arrays in the repos data
+        const listItem = document.createElement("li"); //create a li element
+        listItem.classList.add("repo"); //give class name to li
+        let repoName = eachMethodArray.name; // for each of the method arrays in the repos method collection, grab the key value pair
+
+        listItem.innerHTML = `<h3> ${repoName}</h3>`;
+        repoList.append(listItem);
+        console.log({repoName})
+    }
     
-// }
+};
