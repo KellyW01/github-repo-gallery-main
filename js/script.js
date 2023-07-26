@@ -36,7 +36,13 @@ const userInfo = function(data){
 
 const myPublicRepos = async function (){
     const repoResponse = await fetch (`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
-    const repoData = repoResponse.json;
-    console.log({repoData});
+    const repos = await repoResponse.json;
+    console.log({repos}); //await is underlined in vs code and repoData is not working
+    // displayRepos(repos);
 }
 myPublicRepos();
+
+//display repos
+// const displayRepos = function (repos){
+    
+// }
