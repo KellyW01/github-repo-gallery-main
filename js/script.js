@@ -1,7 +1,8 @@
 const overview = document.querySelector(".overview"); //where profile info will appear
 const username = "KellyW01";
 const repoList = document.querySelector(".repo-list");
-
+const reposSection = document.querySelector(".repos");
+const repoData = document.querySelector(".repo-data");
 
 
 const profile = async function(){
@@ -52,7 +53,30 @@ const displayRepos = function (repos){
 
         listItem.innerHTML = `<h3> ${repoName}</h3>`;
         repoList.append(listItem);
-        console.log({repoName})
+        console.log({repoName});
+        
     }
     
 };
+//event listener that allows the user to click on an individual repo's title to show the repo info.  
+
+//This click event is for the entire ul full of repos
+repoList.addEventListener("click", function (e){
+    
+    if (e.target.matches("h3")){ //capture when the user clicks on the title of an individual repo
+        const repoName = e.target.textContent; //event target
+        //pull the inner text of the h3 clicked
+        
+        console.log({repoName}); //it's working!
+        //grab the element's text and pull the corresponding data for the repo with the same name
+        specificRepo(repoName);
+    }
+    
+});
+
+const specificRepo = async function(repoName){
+    const specificResponse = await fetch (`https://api.github.com/repos/${username}/${repoName}`);
+    const specificRepoData = await specificResponse.json();
+    console.log({specificRepoData}); 
+    const fetchLanguages = await fetch (``)
+}
