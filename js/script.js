@@ -125,13 +125,12 @@ filterInput.addEventListener("input", function(e){
     const lowerUserInput = userInput.toLowerCase();
     const repos = document.querySelectorAll(".repo");
     
-    //console.log({userInput}, {lowerUserInput}); //these work
     //Loop through each repo inside your repos element.  Check to see if the lowercase repo text includes the lowercase search text
     for (listItem of repos) { //for each item in repos
         let lowerRepo = listItem.innerText.toLowerCase(); 
 
         if (lowerRepo.includes(lowerUserInput)){
-            //lowerRepo.classList.remove("hide")
+            listItem.classList.remove("hide");
             //need to show the li.repo that includes letters from the lowerUserInput
         console.log("true");
     }
@@ -139,8 +138,7 @@ filterInput.addEventListener("input", function(e){
             
             listItem.classList.add("hide"),
             //hide li.repo that doesnt include letters from the userinput
-            console.log("false");}
-        //console.log({lowerRepo},{lowerUserInput});
+            console.log("false");}   
     }
 });
-        //If the repo contains the text, show it. If it doesn’t contain the text, hide the repo.
+        
